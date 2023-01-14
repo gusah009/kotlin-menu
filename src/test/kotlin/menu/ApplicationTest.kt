@@ -12,13 +12,14 @@ import org.mockito.ArgumentMatchers
 import org.mockito.MockedStatic
 import org.mockito.Mockito.mockStatic
 import java.time.Duration
-import java.util.Arrays
+import java.util.*
 
 
 class ApplicationTest : NsTest() {
     @DisplayName("전체 기능 테스트")
     @Nested
     internal inner class AllFeatureTest {
+
         @Test
         fun `기능 테스트`() {
             assertTimeoutPreemptively(RANDOM_TEST_TIMEOUT) {
@@ -73,6 +74,7 @@ class ApplicationTest : NsTest() {
         private val value: T,
         vararg values: T
     ) {
+
         /**
          * 첫 번째 값을 반환하고 나서 다음에 반환할 값들.
          * 예를 들면, verification을 처음 실행하면 value를 반환하고
@@ -89,6 +91,7 @@ class ApplicationTest : NsTest() {
         }
 
         companion object {
+
             fun ofRandomNumberInRange(value: Int?, vararg values: Int?): Mocking<*> {
                 return Mocking<Any?>({
                     Randoms.pickNumberInRange(
@@ -110,6 +113,7 @@ class ApplicationTest : NsTest() {
     }
 
     companion object {
+
         private val RANDOM_TEST_TIMEOUT = Duration.ofSeconds(10L)
         private fun assertRandomTest(
             executable: Executable,
