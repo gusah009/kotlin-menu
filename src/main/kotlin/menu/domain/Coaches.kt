@@ -1,5 +1,7 @@
 package menu.domain
 
+import camp.nextstep.edu.missionutils.Randoms
+
 data class Coaches(
     private val coaches: List<Coach>
 ) {
@@ -18,5 +20,16 @@ data class Coaches(
 
     fun containsAll(other: Coaches): Boolean {
         return this.coaches.containsAll(other.coaches)
+    }
+
+    fun recommend(menus: List<String>) {
+        for (coach in coaches) {
+            var recommendedMenu: String
+            do {
+                val shuffleMenus = Randoms.shuffle(menus)
+                recommendedMenu = shuffleMenus[0]
+            } while (coach.isNotRecommendable(recommendedMenu))
+            coach.recommend(recommendedMenu)
+        }
     }
 }
