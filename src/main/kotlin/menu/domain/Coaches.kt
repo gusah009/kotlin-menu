@@ -32,4 +32,8 @@ data class Coaches(
             coach.recommend(recommendedMenu)
         }
     }
+
+    override fun toString(): String {
+        return coaches.map { it.toString() }.joinToString(separator = "\n")
+    }
 }

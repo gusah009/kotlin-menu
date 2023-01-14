@@ -16,4 +16,9 @@ data class Coach(
         if (recommendedMenus.contains(recommendedMenu)) return true
         return false
     }
+
+    override fun toString(): String {
+        return listOf(listOf(name.toString()), recommendedMenus).flatten()
+            .joinToString(prefix = "[ ", postfix = " ]", separator = " | ")
+    }
 }
